@@ -1,0 +1,26 @@
+@{
+    Layout = "_LayoutDashboard";
+}
+
+<div class="pagetitle">
+    <h1>Calculadora</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="Dashboard">Inicio</a></li>
+            <li class="breadcrumb-item active">Calculadora</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<div class="card box-shadow p-3" style="height: 40rem;">
+    <button class="btn btn-primary">Consultar Honorarios</button>
+    <iframe src="https://boleteo.cl/" frameborder="0" class="card box-shadow mt-3 h-100"></iframe>
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        $('aside a').addClass('collapsed');
+        $('#calculadora').removeClass('collapsed');
+    });
+</script>

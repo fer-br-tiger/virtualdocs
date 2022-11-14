@@ -1,0 +1,90 @@
+@{
+    ViewData["Title"] = "CompraContratos";
+    Layout = "";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <title>Compra de contratos</title>
+</head>
+
+<body>
+    <img src="~/img/LOGO.png" alt="LOGO_VirtualDocs" class="mt-2 ms-2" width="240" height="28">
+
+    <div class="w-50 mt-3 mx-auto">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="contratos-tab" data-bs-toggle="tab" data-bs-target="#contratos" type="button"
+                    role="tab" aria-controls="home" aria-selected="true">Cantidad de contratos</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="confirmar-tab" data-bs-toggle="tab" data-bs-target="#confirmar" type="button"
+                    role="tab" aria-controls="profile" aria-selected="false" disabled>Confirmar</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pagar-tab" data-bs-toggle="tab" data-bs-target="#pagar" type="button"
+                    role="tab" aria-controls="messages" aria-selected="false" disabled>Pagar</button>
+            </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content mt-4">
+            <div class="tab-pane fade show active" id="contratos" role="tabpanel" aria-labelledby="contratos-tab" tabindex="0">
+                <div class="card p-5">
+                    <div class="card p-2" style="background-color: #EEEEEC;">
+                        <p class="card-text">Por favor, seleccione la cantidad de contratos que desea emitir. Una vez
+                            agotado el limite podrá solicitar nuevamente los que les sean necesarios</p>
+                            
+                        <div class="row row-cols-1 row-cols-md-3 g-4 mx-auto">
+                            <div class="d-flex flex-column align-items-center">
+                                <button type="button" id="c30" class="btn btn-primary btn-lg">0 a 30<br>CONTRATOS</button>
+                                <h3 class="mt-3">$30</h3>
+                            </div>
+                            <div class="d-flex flex-column align-items-center">
+                                <button type="button" id="c60" class="btn btn-primary btn-lg">30 a 60<br>CONTRATOS</button>
+                                <h3 class="mt-3">$60</h3>
+                            </div>
+                            <div class="d-flex flex-column align-items-center">
+                                <button type="button" id="c100" class="btn btn-primary btn-lg">60 a 100<br>CONTRATOS</button>
+                                <h3 class="mt-3">$100</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="confirmar" role="tabpanel" aria-labelledby="confirmar-tab" tabindex="0">
+                <div class="card p-5">
+                    <div class="card p-2" style="background-color: #EEEEEC;">
+                        <h5 class="fw-bold mx-auto">¿Desea confirmar la operación? (Puede elegir otra cantidad de contratos en la pestaña "Cantidad de contratos")</h5>
+                        <h4 id="totalPagar" class="fw-bold my-4"></h4>
+                        <div class="row row-cols-1 row-cols-md-2 g-4">
+                            <div class="d-flex flex-column align-items-center">
+                                <a role="button" class="btn btn-secondary btn-lg" asp-action="Dashboard">Rechazar</a>
+                            </div>
+                            <div class="d-flex flex-column align-items-center">
+                                <a role="button" id="confirmarTransaccion" class="btn btn-primary btn-lg" href='@Url.Action("CrearTransaccion")'>Confirmar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="pagar" role="tabpanel" aria-labelledby="pagar-tab" tabindex="0">
+                
+            </div>
+        </div>
+    </div>
+
+    <a class="btn btn-primary" asp-controller="Home" asp-action="ComprobantePagoPDF" target="_blank">Mostrar comprobante</a>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~/js/tabsCompra.js"></script>
+</body>
+
+</html>

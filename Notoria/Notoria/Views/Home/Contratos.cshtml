@@ -1,0 +1,113 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model IEnumerable<Notoria.Models.Contrato>
+@{
+    Layout = "_LayoutDashboard";
+}
+
+<div class="pagetitle">
+    <h1>Contratos</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="Dashboard">Inicio</a></li>
+            <li class="breadcrumb-item active">Contratos</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<section class="section dashboard">
+    <div class="row">
+
+        <!-- Left side columns -->
+        <div class="col-lg-8">
+            <div class="row">
+
+                <!-- Top Selling -->
+                <div class="col-12">
+                    <div class="card top-selling overflow-auto">
+
+                        <div class="filter">
+                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                <li class="dropdown-header text-start">
+                                    <h6>Filter</h6>
+                                </li>
+
+                                <li><a class="dropdown-item" href="#">Dia</a></li>
+                                <li><a class="dropdown-item" href="#">Mes</a></li>
+                                <li><a class="dropdown-item" href="#">Todos</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="card-body pb-0">
+                            <h5 class="card-title">Contratos disponibles <span>| Today</span></h5>
+
+                            <table class="table table-borderless">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Preview Contrato</th>
+                                        <th scope="col">Tipo de Contrato</th>
+                                        <th scope="col">Precio</th>
+                                        <th scope="col">Veces Utilizados</th>
+                                        <th scope="col">Disponible</th>
+                                        <th scope="col">Descarga</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <th scope="row"><a href="#"><img src="~/img/2_IMG_CONTRATO.jpg" alt=""></a></th>
+                                            <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
+                                            <td>$@Html.DisplayFor(modelItem => item.Precio_venta)</td>
+                                            <td class="fw-bold">124</td>
+                                            <td>
+                                                @if (item.Estado)
+                                                {
+                                                    <p>DISPONIBLE</p>
+                                                }
+                                                else
+                                                {
+                                                    <p>NO DISPONIBLE</p>
+                                                }
+                                            </td>
+                                            <td><a href="@Html.DisplayFor(modelItem => item.Enlace_descarga)" style="font-size: xx-large; color: #E54749;"><i class="fa-solid fa-file-pdf"></i></a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    </div>
+                </div><!-- End Top Selling -->
+
+            </div>
+        </div>
+
+        <!-- Right side columns -->
+        <div class="col-lg-4">
+
+            <!-- Recent Activity -->
+            <div class="card">
+                <a role="button" class="btn btn-primary">Crear</a>
+            </div><!-- End Recent Activity -->
+            <!-- News & Updates Traffic -->
+            <div class="card">
+                <input type="file" class="form-control" accept="application/pdf" />
+            </div><!-- End News & Updates -->
+            <div class="card">
+                <button type="button" class="btn btn-warning">¡Iniciar trámite!</button>
+            </div>
+        </div><!-- End Right side columns -->
+
+</section>
+
+<script>
+    $(document).ready(function () {
+
+        $('aside a').addClass('collapsed');
+        $('#contratos').removeClass('collapsed');
+    });
+</script>

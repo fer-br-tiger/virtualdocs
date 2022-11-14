@@ -1,0 +1,58 @@
+@{
+    ViewData["Title"] = "CrearTransaccion";
+    Layout = "";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <title>Compra de contratos</title>
+</head>
+
+<body>
+    <img src="~/img/LOGO.png" alt="LOGO_VirtualDocs" class="mt-2 ms-2" width="240" height="28">
+
+    <div class="w-50 mt-3 mx-auto">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="contratos-tab" data-bs-toggle="tab" data-bs-target="#contratos" type="button"
+                    role="tab" aria-controls="home" aria-selected="false" disabled>Cantidad de contratos</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="confirmar-tab" data-bs-toggle="tab" data-bs-target="#confirmar" type="button"
+                    role="tab" aria-controls="profile" aria-selected="false" disabled>Confirmar</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="pagar-tab" data-bs-toggle="tab" data-bs-target="#pagar" type="button"
+                    role="tab" aria-controls="messages" aria-selected="true">Pagar</button>
+            </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content mt-4">
+            <div class="tab-pane fade" id="contratos" role="tabpanel" aria-labelledby="contratos-tab" tabindex="0">
+                
+            </div>
+            <div class="tab-pane fade" id="confirmar" role="tabpanel" aria-labelledby="confirmar-tab" tabindex="0">
+                
+            </div>
+            <div class="tab-pane fade show active" id="pagar" role="tabpanel" aria-labelledby="pagar-tab" tabindex="0">
+                <form action='@ViewData["url"]' method="post" class="d-flex justify-content-center mt-5">
+                    <input type="hidden" name="token_ws" value='@ViewData["token_ws"]'>
+                    <button type="submit" class="btn btn-lg text-white" style="background-color: purple;">¡Pagar!</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~/js/tabsCompra.js"></script>
+</body>
+
+</html>
